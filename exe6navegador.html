@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       class ContaBancaria {
+    constructor(titular, saldoinicial) {
+        this.titular = titular;
+        this.saldo = saldoinicial;
+    }
+
+    exibirSaldo() {
+        document.write(`O saldo da conta do titular ${this.titular} é ${this.saldo.toFixed(2)} <br>`);
+    }
+
+    depositar(valor) {
+        if (valor <= 0) {
+            document.write(`O valor depositado precisa positivo <br>`);
+            return;
+        }
+        this.saldo += valor;
+        document.write(`O valor depositado é ${valor.toFixed(2)} depositado com sucesso`);
+        console.log(`O saldo atual é ${this.saldo.toFixed(2)}`);
+    }
+
+    sacar(valor) {
+        if (valor <= 0) {
+            document.write(`Você deve sacar um valor maior que 0`);
+            return;
+        }
+        if (valor > this.saldo) {
+            document.write(`O seu saldo é insuficiente`);
+            return;
+        }
+        this.saldo -= valor;
+        document.write(`Você sacou ${valor.toFixed(2)}. O saldo atual é ${this.saldo.toFixed(2)}`);
+    }
+}
+
+// Entrada de dados do usuário
+const titular = prompt("Digite o nome do titular da conta:");
+const saldoInicial = parseFloat(prompt("Digite o saldo inicial da conta:"));
+
+// Criação da conta
+const conta = new ContaBancaria(titular, saldoInicial);
+
+// Entrada de valores para depósito e saque
+const valorDeposito = parseFloat(prompt("Digite o valor a ser depositado:"));
+conta.depositar(valorDeposito);
+
+const valorSaque = parseFloat(prompt("Digite o valor a ser sacado:"));
+conta.sacar(valorSaque);
+
+conta.exibirSaldo();
+    </script>
+    
+</body>
+</html>
+
+<!-- se já estiver com o valor em cont, apenas paro usuario entrar com o deposito e saque-->
+
+<!--class ContaBancaria {
+    constructor(titular, saldoinicial) {
+        this.titular = titular;
+        this.saldo = saldoinicial;
+    }
+
+    exibirSaldo() {
+        console.log(`O saldo da conta do titular ${this.titular} é ${this.saldo.toFixed(2)}`);
+    }
+
+    depositar(valor) {
+        if (valor <= 0) {
+            console.log(`O valor depositado precisa ser maior que 0`);
+            return;
+        }
+        this.saldo += valor;
+        console.log(`O valor depositado é ${valor.toFixed(2)} depositado com sucesso`);
+        console.log(`O saldo atual é ${this.saldo.toFixed(2)}`);
+    }
+
+    sacar(valor) {
+        if (valor <= 0) {
+            console.log(`Você deve sacar um valor maior que 0`);
+            return;
+        }
+        if (valor > this.saldo) {
+            console.log(`O seu saldo é insuficiente`);
+            return;
+        }
+        this.saldo -= valor;
+        console.log(`Você sacou ${valor.toFixed(2)}. O saldo atual é ${this.saldo.toFixed(2)}`);
+    }
+}
+
+// Criação da conta
+const conta = new ContaBancaria("João", 1000.00);
+
+// Entrada de dados do usuário
+const valorDeposito = parseFloat(prompt("Digite o valor a ser depositado:"));
+conta.depositar(valorDeposito);
+
+const valorSaque = parseFloat(prompt("Digite o valor a ser sacado:"));
+conta.sacar(valorSaque);
+
+conta.exibirSaldo();-->
